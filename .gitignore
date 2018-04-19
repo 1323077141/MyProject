@@ -1,0 +1,13 @@
+#this is my .gitignore
+*.sh
+logs
+logs/
+.idea
+.idea/
+src/test
+src/test/
+.DS_Store
+target
+target/
+src/.DS_Store
+*.iml
