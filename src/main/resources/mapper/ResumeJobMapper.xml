@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zstu.manage.dao.ResumeJobDao">
+  <resultMap id="BaseResultMap" type="com.zstu.manage.bean.ResumeJob">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="resumeid" jdbcType="INTEGER" property="resumeid" />
+    <result column="jobid" jdbcType="INTEGER" property="jobid" />
+    <result column="jobname" jdbcType="VARCHAR" property="jobname" />
+    <result column="studentid" jdbcType="INTEGER" property="studentid" />
+    <result column="studentnumber" jdbcType="VARCHAR" property="studentnumber" />
+    <result column="firststate" jdbcType="INTEGER" property="firststate" />
+    <result column="firstlook" jdbcType="INTEGER" property="firstlook" />
+    <result column="secondinvite" jdbcType="INTEGER" property="secondinvite" />
+    <result column="secondstate" jdbcType="INTEGER" property="secondstate" />
+    <result column="finalstate" jdbcType="INTEGER" property="finalstate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, resumeid, jobid, jobname, studentid, studentnumber, firststate, firstlook, secondinvite, 
+    secondstate, finalstate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from resumejob
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from resumejob
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zstu.manage.bean.ResumeJob">
+    insert into resumejob (id, resumeid, jobid, 
+      jobname, studentid, studentnumber, 
+      firststate, firstlook, secondinvite, 
+      secondstate, finalstate)
+    values (#{id,jdbcType=INTEGER}, #{resumeid,jdbcType=INTEGER}, #{jobid,jdbcType=INTEGER}, 
+      #{jobname,jdbcType=VARCHAR}, #{studentid,jdbcType=INTEGER}, #{studentnumber,jdbcType=VARCHAR}, 
+      #{firststate,jdbcType=INTEGER}, #{firstlook,jdbcType=INTEGER}, #{secondinvite,jdbcType=INTEGER}, 
+      #{secondstate,jdbcType=INTEGER}, #{finalstate,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zstu.manage.bean.ResumeJob">
+    insert into resumejob
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="resumeid != null">
+        resumeid,
+      </if>
+      <if test="jobid != null">
+        jobid,
+      </if>
+      <if test="jobname != null">
+        jobname,
+      </if>
+      <if test="studentid != null">
+        studentid,
+      </if>
+      <if test="studentnumber != null">
+        studentnumber,
+      </if>
+      <if test="firststate != null">
+        firststate,
+      </if>
+      <if test="firstlook != null">
+        firstlook,
+      </if>
+      <if test="secondinvite != null">
+        secondinvite,
+      </if>
+      <if test="secondstate != null">
+        secondstate,
+      </if>
+      <if test="finalstate != null">
+        finalstate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="resumeid != null">
+        #{resumeid,jdbcType=INTEGER},
+      </if>
+      <if test="jobid != null">
+        #{jobid,jdbcType=INTEGER},
+      </if>
+      <if test="jobname != null">
+        #{jobname,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="studentnumber != null">
+        #{studentnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="firststate != null">
+        #{firststate,jdbcType=INTEGER},
+      </if>
+      <if test="firstlook != null">
+        #{firstlook,jdbcType=INTEGER},
+      </if>
+      <if test="secondinvite != null">
+        #{secondinvite,jdbcType=INTEGER},
+      </if>
+      <if test="secondstate != null">
+        #{secondstate,jdbcType=INTEGER},
+      </if>
+      <if test="finalstate != null">
+        #{finalstate,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zstu.manage.bean.ResumeJob">
+    update resumejob
+    <set>
+      <if test="resumeid != null">
+        resumeid = #{resumeid,jdbcType=INTEGER},
+      </if>
+      <if test="jobid != null">
+        jobid = #{jobid,jdbcType=INTEGER},
+      </if>
+      <if test="jobname != null">
+        jobname = #{jobname,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        studentid = #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="studentnumber != null">
+        studentnumber = #{studentnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="firststate != null">
+        firststate = #{firststate,jdbcType=INTEGER},
+      </if>
+      <if test="firstlook != null">
+        firstlook = #{firstlook,jdbcType=INTEGER},
+      </if>
+      <if test="secondinvite != null">
+        secondinvite = #{secondinvite,jdbcType=INTEGER},
+      </if>
+      <if test="secondstate != null">
+        secondstate = #{secondstate,jdbcType=INTEGER},
+      </if>
+      <if test="finalstate != null">
+        finalstate = #{finalstate,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zstu.manage.bean.ResumeJob">
+    update resumejob
+    set resumeid = #{resumeid,jdbcType=INTEGER},
+      jobid = #{jobid,jdbcType=INTEGER},
+      jobname = #{jobname,jdbcType=VARCHAR},
+      studentid = #{studentid,jdbcType=INTEGER},
+      studentnumber = #{studentnumber,jdbcType=VARCHAR},
+      firststate = #{firststate,jdbcType=INTEGER},
+      firstlook = #{firstlook,jdbcType=INTEGER},
+      secondinvite = #{secondinvite,jdbcType=INTEGER},
+      secondstate = #{secondstate,jdbcType=INTEGER},
+      finalstate = #{finalstate,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

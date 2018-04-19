@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zstu.manage.dao.JobDao">
+  <resultMap id="BaseResultMap" type="com.zstu.manage.bean.Job">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="jobname" jdbcType="VARCHAR" property="jobname" />
+    <result column="jobnumber" jdbcType="INTEGER" property="jobnumber" />
+    <result column="jobdescribe" jdbcType="VARCHAR" property="jobdescribe" />
+    <result column="jobrequire" jdbcType="VARCHAR" property="jobrequire" />
+    <result column="enterpriseid" jdbcType="INTEGER" property="enterpriseid" />
+    <result column="enterprisename" jdbcType="VARCHAR" property="enterprisename" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, jobname, jobnumber, jobdescribe, jobrequire, enterpriseid, enterprisename, state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from job
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from job
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zstu.manage.bean.Job">
+    insert into job (id, jobname, jobnumber, 
+      jobdescribe, jobrequire, enterpriseid, 
+      enterprisename, state)
+    values (#{id,jdbcType=INTEGER}, #{jobname,jdbcType=VARCHAR}, #{jobnumber,jdbcType=INTEGER}, 
+      #{jobdescribe,jdbcType=VARCHAR}, #{jobrequire,jdbcType=VARCHAR}, #{enterpriseid,jdbcType=INTEGER}, 
+      #{enterprisename,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zstu.manage.bean.Job">
+    insert into job
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="jobname != null">
+        jobname,
+      </if>
+      <if test="jobnumber != null">
+        jobnumber,
+      </if>
+      <if test="jobdescribe != null">
+        jobdescribe,
+      </if>
+      <if test="jobrequire != null">
+        jobrequire,
+      </if>
+      <if test="enterpriseid != null">
+        enterpriseid,
+      </if>
+      <if test="enterprisename != null">
+        enterprisename,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="jobname != null">
+        #{jobname,jdbcType=VARCHAR},
+      </if>
+      <if test="jobnumber != null">
+        #{jobnumber,jdbcType=INTEGER},
+      </if>
+      <if test="jobdescribe != null">
+        #{jobdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="jobrequire != null">
+        #{jobrequire,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseid != null">
+        #{enterpriseid,jdbcType=INTEGER},
+      </if>
+      <if test="enterprisename != null">
+        #{enterprisename,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zstu.manage.bean.Job">
+    update job
+    <set>
+      <if test="jobname != null">
+        jobname = #{jobname,jdbcType=VARCHAR},
+      </if>
+      <if test="jobnumber != null">
+        jobnumber = #{jobnumber,jdbcType=INTEGER},
+      </if>
+      <if test="jobdescribe != null">
+        jobdescribe = #{jobdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="jobrequire != null">
+        jobrequire = #{jobrequire,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseid != null">
+        enterpriseid = #{enterpriseid,jdbcType=INTEGER},
+      </if>
+      <if test="enterprisename != null">
+        enterprisename = #{enterprisename,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zstu.manage.bean.Job">
+    update job
+    set jobname = #{jobname,jdbcType=VARCHAR},
+      jobnumber = #{jobnumber,jdbcType=INTEGER},
+      jobdescribe = #{jobdescribe,jdbcType=VARCHAR},
+      jobrequire = #{jobrequire,jdbcType=VARCHAR},
+      enterpriseid = #{enterpriseid,jdbcType=INTEGER},
+      enterprisename = #{enterprisename,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zstu.manage.dao.StudentCoursesDao">
+  <resultMap id="BaseResultMap" type="com.zstu.manage.bean.StudentCourses">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="courseid" jdbcType="INTEGER" property="courseid" />
+    <result column="coursename" jdbcType="VARCHAR" property="coursename" />
+    <result column="studentid" jdbcType="INTEGER" property="studentid" />
+    <result column="studentnumber" jdbcType="VARCHAR" property="studentnumber" />
+    <result column="score" jdbcType="REAL" property="score" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, courseid, coursename, studentid, studentnumber, score
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from studentcourses
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from studentcourses
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zstu.manage.bean.StudentCourses">
+    insert into studentcourses (id, courseid, coursename, 
+      studentid, studentnumber, score
+      )
+    values (#{id,jdbcType=INTEGER}, #{courseid,jdbcType=INTEGER}, #{coursename,jdbcType=VARCHAR}, 
+      #{studentid,jdbcType=INTEGER}, #{studentnumber,jdbcType=VARCHAR}, #{score,jdbcType=REAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zstu.manage.bean.StudentCourses">
+    insert into studentcourses
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="courseid != null">
+        courseid,
+      </if>
+      <if test="coursename != null">
+        coursename,
+      </if>
+      <if test="studentid != null">
+        studentid,
+      </if>
+      <if test="studentnumber != null">
+        studentnumber,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="courseid != null">
+        #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="coursename != null">
+        #{coursename,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="studentnumber != null">
+        #{studentnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zstu.manage.bean.StudentCourses">
+    update studentcourses
+    <set>
+      <if test="courseid != null">
+        courseid = #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="coursename != null">
+        coursename = #{coursename,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        studentid = #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="studentnumber != null">
+        studentnumber = #{studentnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zstu.manage.bean.StudentCourses">
+    update studentcourses
+    set courseid = #{courseid,jdbcType=INTEGER},
+      coursename = #{coursename,jdbcType=VARCHAR},
+      studentid = #{studentid,jdbcType=INTEGER},
+      studentnumber = #{studentnumber,jdbcType=VARCHAR},
+      score = #{score,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

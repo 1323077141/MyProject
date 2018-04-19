@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zstu.manage.dao.ResumeDao">
+  <resultMap id="BaseResultMap" type="com.zstu.manage.bean.Resume">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="jobname" jdbcType="VARCHAR" property="jobname" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="professional" jdbcType="VARCHAR" property="professional" />
+    <result column="experience" jdbcType="VARCHAR" property="experience" />
+    <result column="internship" jdbcType="VARCHAR" property="internship" />
+    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="studentid" jdbcType="INTEGER" property="studentid" />
+    <result column="studentnumber" jdbcType="VARCHAR" property="studentnumber" />
+    <result column="resumename" jdbcType="VARCHAR" property="resumename" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, sex, telephone, email, jobname, school, professional, experience, internship, 
+    describe, studentid, studentnumber, resumename
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from resume
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from resume
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zstu.manage.bean.Resume">
+    insert into resume (id, name, sex, 
+      telephone, email, jobname, 
+      school, professional, experience, 
+      internship, describe, studentid, 
+      studentnumber, resumename)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{jobname,jdbcType=VARCHAR}, 
+      #{school,jdbcType=VARCHAR}, #{professional,jdbcType=VARCHAR}, #{experience,jdbcType=VARCHAR}, 
+      #{internship,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR}, #{studentid,jdbcType=INTEGER}, 
+      #{studentnumber,jdbcType=VARCHAR}, #{resumename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zstu.manage.bean.Resume">
+    insert into resume
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="jobname != null">
+        jobname,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="professional != null">
+        professional,
+      </if>
+      <if test="experience != null">
+        experience,
+      </if>
+      <if test="internship != null">
+        internship,
+      </if>
+      <if test="describe != null">
+        describe,
+      </if>
+      <if test="studentid != null">
+        studentid,
+      </if>
+      <if test="studentnumber != null">
+        studentnumber,
+      </if>
+      <if test="resumename != null">
+        resumename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="jobname != null">
+        #{jobname,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="professional != null">
+        #{professional,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null">
+        #{experience,jdbcType=VARCHAR},
+      </if>
+      <if test="internship != null">
+        #{internship,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="studentnumber != null">
+        #{studentnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="resumename != null">
+        #{resumename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zstu.manage.bean.Resume">
+    update resume
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="jobname != null">
+        jobname = #{jobname,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="professional != null">
+        professional = #{professional,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null">
+        experience = #{experience,jdbcType=VARCHAR},
+      </if>
+      <if test="internship != null">
+        internship = #{internship,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        studentid = #{studentid,jdbcType=INTEGER},
+      </if>
+      <if test="studentnumber != null">
+        studentnumber = #{studentnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="resumename != null">
+        resumename = #{resumename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zstu.manage.bean.Resume">
+    update resume
+    set name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      jobname = #{jobname,jdbcType=VARCHAR},
+      school = #{school,jdbcType=VARCHAR},
+      professional = #{professional,jdbcType=VARCHAR},
+      experience = #{experience,jdbcType=VARCHAR},
+      internship = #{internship,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR},
+      studentid = #{studentid,jdbcType=INTEGER},
+      studentnumber = #{studentnumber,jdbcType=VARCHAR},
+      resumename = #{resumename,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
