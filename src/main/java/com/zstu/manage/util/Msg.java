@@ -1,13 +1,15 @@
 package com.zstu.manage.util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Msg {
 	
 	private int code;
 	private String msg;
-	private Map<String, Object> extend = new HashMap<String, Object>();
+	private List<Map<String, Object>> extend = new ArrayList<>();
 	
 	public static Msg success(){
 		Msg result = new Msg();
@@ -24,7 +26,9 @@ public class Msg {
 	}
 	
 	public Msg add(String key, Object value){
-		this.getExtend().put(key, value);
+		Map<String,Object> map = new HashMap<>();
+		map.put(key,value);
+		this.getExtend().add(map);
 		return this;
 	}
 	
@@ -40,10 +44,10 @@ public class Msg {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
-	public Map<String, Object> getExtend() {
+	public List<Map<String, Object>> getExtend() {
 		return extend;
 	}
-	public void setExtend(Map<String, Object> extend) {
+	public void setExtend(List<Map<String, Object>> extend) {
 		this.extend = extend;
 	}
 	

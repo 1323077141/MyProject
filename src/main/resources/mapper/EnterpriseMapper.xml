@@ -7,10 +7,18 @@
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="state" jdbcType="INTEGER" property="state" />
     <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="enterprisename" jdbcType="VARCHAR" property="enterprisename" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, enterprisenumber, password, state, describe
+    id, enterprisenumber, password, state, describe, enterprisename
   </sql>
+  
+  <select id="selectByEnterpriseNumber" parameterType="com.zstu.manage.bean.Enterprise" resultType="BaseResultMap">
+  select * from enterprise
+  where enterprisenumber = #{enterprisenumber}
+  and password = #{password}
+  and state = 1
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -23,9 +31,11 @@
   </delete>
   <insert id="insert" parameterType="com.zstu.manage.bean.Enterprise">
     insert into enterprise (id, enterprisenumber, password, 
-      state, describe)
+      state, describe, enterprisename
+      )
     values (#{id,jdbcType=INTEGER}, #{enterprisenumber,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{state,jdbcType=INTEGER}, #{describe,jdbcType=VARCHAR})
+      #{state,jdbcType=INTEGER}, #{describe,jdbcType=VARCHAR}, #{enterprisename,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.zstu.manage.bean.Enterprise">
     insert into enterprise
@@ -45,6 +55,9 @@
       <if test="describe != null">
         describe,
       </if>
+      <if test="enterprisename != null">
+        enterprisename,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -61,6 +74,9 @@
       </if>
       <if test="describe != null">
         #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="enterprisename != null">
+        #{enterprisename,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -79,6 +95,9 @@
       <if test="describe != null">
         describe = #{describe,jdbcType=VARCHAR},
       </if>
+      <if test="enterprisename != null">
+        enterprisename = #{enterprisename,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -87,7 +106,8 @@
     set enterprisenumber = #{enterprisenumber,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       state = #{state,jdbcType=INTEGER},
-      describe = #{describe,jdbcType=VARCHAR}
+      describe = #{describe,jdbcType=VARCHAR},
+      enterprisename = #{enterprisename,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

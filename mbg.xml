@@ -43,10 +43,10 @@
     	targetProject=".\src\main\java">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
-	
-	
+
+
 	<!-- 指定每个表的生成策略 -->
-	<!-- 
+	<!--
 
       <table tableName="courses" domainObjectName="Courses" enableCountByExample="false"
              enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
@@ -75,6 +75,7 @@
       <table tableName="studentcourses" domainObjectName="StudentCourses" enableCountByExample="false"
              enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         -->
-
+      <table tableName="enterprise" domainObjectName="Enterprise" enableCountByExample="false"
+             enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
   </context>
 </generatorConfiguration>

@@ -11,6 +11,8 @@ public class Enterprise {
 
     private String describe;
 
+    private String enterprisename;
+
     public Integer getId() {
         return id;
     }
@@ -49,5 +51,13 @@ public class Enterprise {
 
     public void setDescribe(String describe) {
         this.describe = describe == null ? null : describe.trim();
+    }
+
+    public String getEnterprisename() {
+        return enterprisename;
+    }
+
+    public void setEnterprisename(String enterprisename) {
+        this.enterprisename = enterprisename == null ? null : enterprisename.trim();
     }
 }
