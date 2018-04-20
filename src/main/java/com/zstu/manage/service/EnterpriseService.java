@@ -1,9 +1,11 @@
 package com.zstu.manage.service;
 
 import com.zstu.manage.bean.Enterprise;
-import org.springframework.stereotype.Service;
+import com.zstu.manage.util.Msg;
 
-@Service
 public interface EnterpriseService {
-    Enterprise login(Enterprise record);
+    Msg login(Enterprise record);
+
+    Boolean register(Enterprise record);
+
 }

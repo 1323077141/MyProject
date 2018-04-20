@@ -2,12 +2,16 @@ package com.zstu.manage.dao;
 
 import com.zstu.manage.bean.Enterprise;
 
+
+
 public interface EnterpriseDao {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Enterprise record);
 
     int insertSelective(Enterprise record);
+
+    Enterprise selectByEnterpriseNumber(Enterprise record);
 
     Enterprise selectByPrimaryKey(Integer id);
 

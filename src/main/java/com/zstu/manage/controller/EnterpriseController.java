@@ -18,13 +18,23 @@ public class EnterpriseController {
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
     public Msg login(Enterprise record,HttpSession session){
-        Enterprise enterprise = enterpriseService.login(record);
-        if(enterprise != null){
-            session.setAttribute("enterpriseNumber",enterprise.getEnterprisenumber());
-            session.setAttribute("enterpriseId",enterprise.getId());
-            return Msg.success().add("enterprise",enterprise);
+        Msg msg = enterpriseService.login(record);
+//        if(enterprise != null){
+//            session.setAttribute("enterpriseNumber",enterprise.getEnterprisenumber());
+//            session.setAttribute("enterpriseId",enterprise.getId());
+//            return Msg.success().add("enterprise",enterprise);
+//        }else{
+//            return Msg.fail().add("enterprise",enterprise);
+//        }
+    }
+
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg Register(Enterprise record){
+        if(enterpriseService.register(record)){
+            return Msg.success();
         }else{
-            return Msg.fail().add("enterprise",enterprise);
+            return Msg.fail();
         }
     }
 

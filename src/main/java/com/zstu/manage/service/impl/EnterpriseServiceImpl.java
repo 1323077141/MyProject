@@ -13,8 +13,25 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     @Resource
     EnterpriseDao enterpriseDao;
 
-    public Enterprise login(Enterprise record){
+    public Msg login(Enterprise record){
+        Enterprise enterprise = enterpriseDao.selectByEnterpriseNumber(record);
+        if(enterprise != null){
+            if(record.getPassword().equals(enterprise.getPassword()) && enterprise.getState() == 1){
+                return Msg.success().add("enterprise",enterprise);
+            }
+
+        }
         return null;
+    }
+
+    public Boolean register(Enterprise record){
+        int n = 0;
+        n = enterpriseDao.insertSelective(record);
+        if(n > 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

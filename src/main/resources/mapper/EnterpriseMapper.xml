@@ -14,10 +14,8 @@
   </sql>
   
   <select id="selectByEnterpriseNumber" parameterType="com.zstu.manage.bean.Enterprise" resultType="BaseResultMap">
-  select * from enterprise
-  where enterprisenumber = #{enterprisenumber}
-  and password = #{password}
-  and state = 1
+    select * from enterprise
+    where enterprisenumber = #{enterprisenumber}
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
