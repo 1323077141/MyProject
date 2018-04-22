@@ -9,6 +9,13 @@
   <sql id="Base_Column_List">
     id, managername, password
   </sql>
+
+  <select id="selectByName" parameterType="com.zstu.manage.bean.Manager" resultMap="BaseResultMap">
+    select *
+    from manager
+    where managername = #{managername}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

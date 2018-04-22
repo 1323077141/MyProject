@@ -2,6 +2,7 @@ package com.zstu.manage.dao;
 
 import com.zstu.manage.bean.Enterprise;
 
+import java.util.List;
 
 
 public interface EnterpriseDao {
@@ -12,6 +13,8 @@ public interface EnterpriseDao {
     int insertSelective(Enterprise record);
 
     Enterprise selectByEnterpriseNumber(Enterprise record);
+
+    List<Enterprise> selectAll();
 
     Enterprise selectByPrimaryKey(Integer id);
 

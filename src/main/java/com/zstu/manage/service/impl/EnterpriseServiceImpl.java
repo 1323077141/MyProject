@@ -7,21 +7,16 @@ import com.zstu.manage.util.Msg;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class EnterpriseServiceImpl implements EnterpriseService {
     @Resource
     EnterpriseDao enterpriseDao;
 
-    public Msg login(Enterprise record){
+    public Enterprise login(Enterprise record){
         Enterprise enterprise = enterpriseDao.selectByEnterpriseNumber(record);
-        if(enterprise != null){
-            if(record.getPassword().equals(enterprise.getPassword()) && enterprise.getState() == 1){
-                return Msg.success().add("enterprise",enterprise);
-            }
-
-        }
-        return null;
+        return enterprise;
     }
 
     public Boolean register(Enterprise record){
@@ -34,4 +29,27 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         }
     }
 
+    public Boolean update(Enterprise record){
+        int n = 0;
+        n = enterpriseDao.updateByPrimaryKeySelective(record);
+        if(n > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public List<Enterprise> getAll(){
+        return enterpriseDao.selectAll();
+    }
+
+    public Boolean delete(Integer id){
+        int n = 0;
+        n = enterpriseDao.deleteByPrimaryKey(id);
+        if(n > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

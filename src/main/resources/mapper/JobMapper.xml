@@ -14,6 +14,10 @@
   <sql id="Base_Column_List">
     id, jobname, jobnumber, jobdescribe, jobrequire, enterpriseid, enterprisename, state
   </sql>
+  <select id="getAll" resultMap="BaseResultMap">
+    select *
+    from job
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

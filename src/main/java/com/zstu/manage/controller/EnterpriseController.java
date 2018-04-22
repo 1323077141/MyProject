@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller("/enterprise")
 public class EnterpriseController {
@@ -18,14 +19,15 @@ public class EnterpriseController {
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
     public Msg login(Enterprise record,HttpSession session){
-        Msg msg = enterpriseService.login(record);
-//        if(enterprise != null){
-//            session.setAttribute("enterpriseNumber",enterprise.getEnterprisenumber());
-//            session.setAttribute("enterpriseId",enterprise.getId());
-//            return Msg.success().add("enterprise",enterprise);
-//        }else{
-//            return Msg.fail().add("enterprise",enterprise);
-//        }
+        Enterprise enterprise = enterpriseService.login(record);
+        if(enterprise != null){
+            if(enterprise.getPassword().equals(record.getPassword()) &&enterprise.getState() == 1){
+                session.setAttribute("enterpriseNumber",enterprise.getEnterprisenumber());
+                session.setAttribute("enterpriseId",enterprise.getId());
+                return Msg.success().add("enterprise",enterprise);
+            }
+        }
+        return Msg.fail().add("enterprise",enterprise);
     }
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
@@ -36,6 +38,35 @@ public class EnterpriseController {
         }else{
             return Msg.fail();
         }
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @ResponseBody
+    public Msg CheckOut(Enterprise record){
+        if(record == null){
+            return Msg.fail();
+        }
+        if(enterpriseService.update(record)){
+            return Msg.success();
+        }else{
+            return Msg.fail();
+        }
+    }
+
+    @RequestMapping("/getAll")
+    @ResponseBody
+    public Msg getAll(){
+        List<Enterprise> list = enterpriseService.getAll();
+        return Msg.success().add("list",list);
+    }
+
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg Delete(Integer id){
+        if(enterpriseService.delete(id)){
+            return Msg.success();
+        }
+        return Msg.fail();
     }
 
 }

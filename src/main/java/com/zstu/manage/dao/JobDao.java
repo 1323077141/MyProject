@@ -2,6 +2,8 @@ package com.zstu.manage.dao;
 
 import com.zstu.manage.bean.Job;
 
+import java.util.List;
+
 public interface JobDao {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface JobDao {
     int updateByPrimaryKeySelective(Job record);
 
     int updateByPrimaryKey(Job record);
+
+    List<Job> getAll();
 }

@@ -2,6 +2,7 @@ package com.zstu.manage.dao;
 
 import com.zstu.manage.bean.Manager;
 
+
 public interface ManagerDao {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +15,6 @@ public interface ManagerDao {
     int updateByPrimaryKeySelective(Manager record);
 
     int updateByPrimaryKey(Manager record);
+
+    Manager selectByName(Manager record);
 }
