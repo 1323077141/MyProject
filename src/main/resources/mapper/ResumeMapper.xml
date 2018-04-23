@@ -21,6 +21,11 @@
     id, name, sex, telephone, email, jobname, school, professional, experience, internship, 
     describe, studentid, studentnumber, resumename
   </sql>
+  <select id="getByStudentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
+    from resume
+    where studentid = #{studentid}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

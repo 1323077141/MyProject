@@ -19,6 +19,8 @@ public interface ResumeJobService {
 
     List<ResumeJob> getByEnterpriseId(Integer EnterpriseId);
 
+    List<ResumeJob> getAll();
 
+    List<ResumeJob> getByJobNameAndEnterprise(ResumeJob record);
 
 }

@@ -1,6 +1,6 @@
 package com.zstu.manage.controller;
 
-import com.zstu.manage.bean.ResumeJob;
+import com.zstu.manage.service.ResumeJobService;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 public class ResumeJobController {
     @Resource
     ResumeJobService resumeJobService;
+
 
 
 }

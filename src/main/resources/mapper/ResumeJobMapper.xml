@@ -18,10 +18,10 @@
     id, resumeid, jobid, jobname, studentid, studentnumber, firststate, firstlook, secondinvite, 
     secondstate, finalstate
   </sql>
-  <select id="getByStudentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select *
-    from resume
-    where studentid = #{studentid}
+  <select id="getAll" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from resumejob
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
