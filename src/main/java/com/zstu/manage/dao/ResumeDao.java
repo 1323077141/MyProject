@@ -2,6 +2,8 @@ package com.zstu.manage.dao;
 
 import com.zstu.manage.bean.Resume;
 
+import java.util.List;
+
 public interface ResumeDao {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface ResumeDao {
     int updateByPrimaryKeySelective(Resume record);
 
     int updateByPrimaryKey(Resume record);
+
+    List<Resume> getByStudentId(Integer studentid);
 }

@@ -18,6 +18,16 @@
     select *
     from job
   </select>
+  <select id="getByName" resultMap="BaseResultMap" parameterType="com.zstu.manage.bean.Job">
+    select *
+    from job
+    where jobname like concat('%',#{jobname},'%')
+  </select>
+  <select id="getAllByEnter" resultMap="BaseResultMap" parameterType="com.zstu.manage.bean.Job">
+    select *
+    from job
+    where enterpriseid = #{enterpriseid}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

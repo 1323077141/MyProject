@@ -80,4 +80,9 @@ public class Job {
     public void setState(Integer state) {
         this.state = state;
     }
+
+    public Job(Integer enterpriseId){
+        this.enterpriseid = enterpriseId;
+    }
+
 }

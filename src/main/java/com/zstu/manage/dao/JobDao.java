@@ -18,4 +18,8 @@ public interface JobDao {
     int updateByPrimaryKey(Job record);
 
     List<Job> getAll();
+
+    List<Job> getByName(Job record);
+
+    List<Job> getAllByEnter(Job record);
 }

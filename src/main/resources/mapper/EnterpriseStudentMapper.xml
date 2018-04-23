@@ -12,6 +12,15 @@
   <sql id="Base_Column_List">
     id, studentid, studentnumber, enterpriseid, enterprisename, state
   </sql>
+  <select id="getAll" resultMap="BaseResultMap">
+    select *
+    from enterprisestudent
+  </select>
+  <select id="getByStudentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
+    from studentcourses
+    where studentid = #{studentid}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

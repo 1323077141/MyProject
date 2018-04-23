@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
 
-@Controller
+@Controller("/course")
 public class CoursesController {
     @Resource
     CoursesService coursesService;
