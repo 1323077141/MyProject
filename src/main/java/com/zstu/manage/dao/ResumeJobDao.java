@@ -2,6 +2,8 @@ package com.zstu.manage.dao;
 
 import com.zstu.manage.bean.ResumeJob;
 
+import java.util.List;
+
 public interface ResumeJobDao {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface ResumeJobDao {
     int updateByPrimaryKeySelective(ResumeJob record);
 
     int updateByPrimaryKey(ResumeJob record);
+
+    List<ResumeJob> getAll();
 }

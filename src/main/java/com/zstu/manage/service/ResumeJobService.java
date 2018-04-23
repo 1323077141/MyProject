@@ -13,7 +13,7 @@ public interface ResumeJobService {
 
     Boolean update(ResumeJob record);
 
-    Boolean delete(ResumeJob record);
+    Boolean delete(Integer id);
 
     List<ResumeJob> getByStudentId(Integer studentId);
 
