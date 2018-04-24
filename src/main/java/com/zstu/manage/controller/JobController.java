@@ -12,26 +12,26 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-@Controller("/job")
+@Controller
 public class JobController {
     @Resource
     private JobService jobService;
 
-    @RequestMapping(value = "/getAll")
+    @RequestMapping(value = "/getAllJob")
     @ResponseBody
     public Msg getAll(){
         List<Job> list = jobService.getAll();
         return Msg.success().add("list",list);
     }
 
-    @RequestMapping(value = "/getByName",method = RequestMethod.POST)
+    @RequestMapping(value = "/getJobByName",method = RequestMethod.POST)
     @ResponseBody
     public Msg getByName(Job job){
         List<Job> list = jobService.getByName(job);
         return Msg.success().add("list",list);
     }
 
-    @RequestMapping(value = "/getByEnterprise")
+    @RequestMapping(value = "/getJobByEnterprise")
     @ResponseBody
     public Msg getByEnterprise(HttpSession session){
         Integer enterpriseId = (Integer) session.getAttribute("enterpriseId");
@@ -40,7 +40,7 @@ public class JobController {
         return Msg.success().add("list",list);
     }
 
-    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    @RequestMapping(value = "/updateJob",method = RequestMethod.POST)
     @ResponseBody
     public Msg update(Job job){
         if(jobService.update(job)){
@@ -50,7 +50,7 @@ public class JobController {
         }
     }
 
-    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteJob",method = RequestMethod.POST)
     @ResponseBody
     public Msg delete(Integer id){
         if(jobService.delete(id)){
@@ -60,7 +60,7 @@ public class JobController {
         }
     }
 
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    @RequestMapping(value = "/addJob",method = RequestMethod.POST)
     @ResponseBody
     public Msg add(Job job){
         if(jobService.insert(job)){

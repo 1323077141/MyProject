@@ -10,15 +10,21 @@
     <result column="enterprisename" jdbcType="VARCHAR" property="enterprisename" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, enterprisenumber, password, state, describe, enterprisename
+    id, enterprisenumber, password, state, `describe`, enterprisename
   </sql>
   
-  <select id="selectByEnterpriseNumber" parameterType="com.zstu.manage.bean.Enterprise" resultType="BaseResultMap">
+  <select id="selectByEnterpriseNumber" parameterType="com.zstu.manage.bean.Enterprise" resultMap="BaseResultMap">
     select * from enterprise
     where enterprisenumber = #{enterprisenumber}
   </select>
 
-  <select id="selectAll" resultType="BaseResultMap">
+  <select id="getByEnterpriseName" parameterType="com.zstu.manage.bean.Enterprise" resultMap="BaseResultMap">
+    select *
+    from enterprise
+    where enterprisename = #{enterprisename}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
     select *
     from enterprise
   </select>
@@ -35,7 +41,7 @@
   </delete>
   <insert id="insert" parameterType="com.zstu.manage.bean.Enterprise">
     insert into enterprise (id, enterprisenumber, password, 
-      state, describe, enterprisename
+      state, `describe`, enterprisename
       )
     values (#{id,jdbcType=INTEGER}, #{enterprisenumber,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{state,jdbcType=INTEGER}, #{describe,jdbcType=VARCHAR}, #{enterprisename,jdbcType=VARCHAR}
@@ -57,7 +63,7 @@
         state,
       </if>
       <if test="describe != null">
-        describe,
+        `describe`,
       </if>
       <if test="enterprisename != null">
         enterprisename,
@@ -97,7 +103,7 @@
         state = #{state,jdbcType=INTEGER},
       </if>
       <if test="describe != null">
-        describe = #{describe,jdbcType=VARCHAR},
+        `describe` = #{describe,jdbcType=VARCHAR},
       </if>
       <if test="enterprisename != null">
         enterprisename = #{enterprisename,jdbcType=VARCHAR},
@@ -110,7 +116,7 @@
     set enterprisenumber = #{enterprisenumber,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       state = #{state,jdbcType=INTEGER},
-      describe = #{describe,jdbcType=VARCHAR},
+      `describe` = #{describe,jdbcType=VARCHAR},
       enterprisename = #{enterprisename,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

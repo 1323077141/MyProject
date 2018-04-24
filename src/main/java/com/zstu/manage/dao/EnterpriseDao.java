@@ -16,6 +16,8 @@ public interface EnterpriseDao {
 
     List<Enterprise> selectAll();
 
+    Enterprise getByEnterpriseName(Enterprise record);
+
     Enterprise selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(Enterprise record);

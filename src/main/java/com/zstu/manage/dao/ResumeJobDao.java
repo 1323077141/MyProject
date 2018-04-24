@@ -18,4 +18,5 @@ public interface ResumeJobDao {
     int updateByPrimaryKey(ResumeJob record);
 
     List<ResumeJob> getAll();
+
 }

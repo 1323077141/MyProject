@@ -3,11 +3,11 @@ package com.zstu.manage.service.impl;
 import com.zstu.manage.bean.Enterprise;
 import com.zstu.manage.dao.EnterpriseDao;
 import com.zstu.manage.service.EnterpriseService;
-import com.zstu.manage.util.Msg;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class EnterpriseServiceImpl implements EnterpriseService {
@@ -19,9 +19,14 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         return enterprise;
     }
 
+    public Enterprise getByName(Enterprise record){
+        Enterprise enterprise = enterpriseDao.getByEnterpriseName(record);
+        return enterprise;
+    }
+
     public Boolean register(Enterprise record){
-        int n = 0;
-        n = enterpriseDao.insertSelective(record);
+        record.setEnterprisenumber("qy" + UUID.randomUUID().toString().split("-")[0]);
+        int n = enterpriseDao.insertSelective(record);
         if(n > 0){
             return true;
         }else{
@@ -30,8 +35,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     }
 
     public Boolean update(Enterprise record){
-        int n = 0;
-        n = enterpriseDao.updateByPrimaryKeySelective(record);
+        int n = enterpriseDao.updateByPrimaryKeySelective(record);
         if(n > 0){
             return true;
         }else{
@@ -44,8 +48,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     }
 
     public Boolean delete(Integer id){
-        int n = 0;
-        n = enterpriseDao.deleteByPrimaryKey(id);
+        int n = enterpriseDao.deleteByPrimaryKey(id);
         if(n > 0){
             return true;
         }else{

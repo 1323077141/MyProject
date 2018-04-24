@@ -11,12 +11,18 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-@Controller("/enterprise")
+@Controller
 public class EnterpriseController {
     @Resource
     private EnterpriseService enterpriseService;
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    /**
+     * 登录
+     * @param record
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "/loginEnter",method = RequestMethod.POST)
     @ResponseBody
     public Msg login(Enterprise record,HttpSession session){
         Enterprise enterprise = enterpriseService.login(record);
@@ -30,17 +36,22 @@ public class EnterpriseController {
         return Msg.fail().add("enterprise",enterprise);
     }
 
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    /**
+     * 注册
+     * @param record
+     * @return
+     */
+    @RequestMapping(value = "/registerEnter",method = RequestMethod.POST)
     @ResponseBody
     public Msg Register(Enterprise record){
         if(enterpriseService.register(record)){
-            return Msg.success();
+            return Msg.success().add("record",record);
         }else{
             return Msg.fail();
         }
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/updateEnter", method = RequestMethod.POST)
     @ResponseBody
     public Msg CheckOut(Enterprise record){
         if(record == null){
@@ -53,14 +64,14 @@ public class EnterpriseController {
         }
     }
 
-    @RequestMapping("/getAll")
+    @RequestMapping("/getAllEnter")
     @ResponseBody
     public Msg getAll(){
         List<Enterprise> list = enterpriseService.getAll();
         return Msg.success().add("list",list);
     }
 
-    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteEnter",method = RequestMethod.POST)
     @ResponseBody
     public Msg Delete(Integer id){
         if(enterpriseService.delete(id)){

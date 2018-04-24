@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 /**
  * Created by Administrator on 2018-04-23.
  */
-@Controller("/resumrJob")
+@Controller
 public class ResumeJobController {
     @Resource
     ResumeJobService resumeJobService;

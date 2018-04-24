@@ -15,13 +15,13 @@ import java.util.List;
 /**
  * Created by Administrator on 2018-04-23.
  */
-@Controller("/enterpriseStudent")
+@Controller
 public class EnterpriseStudentController {
 
     @Resource
     private EnterpriseStudentService enterpriseStudentService;
 
-    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    @RequestMapping(value = "/updateEnterStu",method = RequestMethod.POST)
     @ResponseBody
     public Msg update(EnterpriseStudent record){
         if(enterpriseStudentService.update(record)){
@@ -31,14 +31,14 @@ public class EnterpriseStudentController {
         }
     }
 
-    @RequestMapping("/getAll")
+    @RequestMapping("/getAllEnterStu")
     @ResponseBody
     public Msg getAll(){
         List<EnterpriseStudent> list = enterpriseStudentService.getAll();
         return Msg.success().add("list",list);
     }
 
-    @RequestMapping("/getByStudentId")
+    @RequestMapping("/getEnterStuByStudentId")
     @ResponseBody
     public Msg getByStudentId(HttpSession session){
         Integer studentId = (Integer) session.getAttribute("studentId");

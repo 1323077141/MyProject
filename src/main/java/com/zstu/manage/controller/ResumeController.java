@@ -15,13 +15,13 @@ import java.util.List;
 /**
  * Created by Administrator on 2018-04-23.
  */
-@Controller("/resume")
+@Controller
 public class ResumeController {
 
     @Resource
     private ResumeService resumeService;
 
-    @RequestMapping("/getByStudentId")
+    @RequestMapping("/getResumeByStudentId")
     @ResponseBody
     public Msg getByStudentId(HttpSession session){
         Integer StudentId = (Integer) session.getAttribute("studentId");
@@ -29,7 +29,7 @@ public class ResumeController {
         return Msg.success().add("list",list);
     }
 
-    @RequestMapping("/getById")
+    @RequestMapping("/getResumeById")
     @ResponseBody
     public Msg getById(Integer id){
         Resume resume = resumeService.getByResumeId(id);
@@ -39,7 +39,7 @@ public class ResumeController {
         return Msg.fail();
     }
 
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    @RequestMapping(value = "/addResume",method = RequestMethod.POST)
     @ResponseBody
     public Msg add(Resume resume){
         if(resumeService.add(resume)){
@@ -49,7 +49,7 @@ public class ResumeController {
         }
     }
 
-    @RequestMapping(value = "/delete")
+    @RequestMapping(value = "/deleteResume")
     @ResponseBody
     public Msg delete(Integer id){
         if(resumeService.delete(id)){
@@ -59,7 +59,7 @@ public class ResumeController {
         }
     }
 
-    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    @RequestMapping(value = "/updateResume",method = RequestMethod.POST)
     @ResponseBody
     public Msg update(Resume resume){
         if(resumeService.update(resume)){

@@ -13,13 +13,13 @@ import javax.servlet.http.HttpSession;
 /**
  * Created by Administrator on 2018-04-19.
  */
-@Controller("/manager")
+@Controller
 public class ManagerController {
 
     @Resource
     private ManagerService managerService;
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/loginMan",method = RequestMethod.POST)
     @ResponseBody
     public Msg login(Manager record,HttpSession session){
         Manager manager = managerService.selectByName(record);
@@ -33,7 +33,7 @@ public class ManagerController {
         return Msg.fail();
     }
 
-    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    @RequestMapping(value = "/updateMan",method = RequestMethod.POST)
     @ResponseBody
     public Msg update(Manager manager){
         if(managerService.update(manager)){
