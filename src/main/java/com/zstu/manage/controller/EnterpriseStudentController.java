@@ -62,7 +62,17 @@ public class EnterpriseStudentController {
         return Msg.success().add("list",list);
     }
 
-
+    /**
+     * 根据状态获取信息列表
+     * @param record
+     * @return
+     */
+    @RequestMapping("/getEnterStuByState")
+    @ResponseBody
+    public Msg getByState(EnterpriseStudent record){
+        List<EnterpriseStudent> list = enterpriseStudentService.getByState(record);
+        return Msg.success().add("list",list);
+    }
 
     @RequestMapping("/getEnterStuByStudentId")
     @ResponseBody

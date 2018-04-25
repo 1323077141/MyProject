@@ -17,4 +17,6 @@ public interface EnterpriseStudentService {
     Boolean insert(EnterpriseStudent record);
 
     Boolean delete(Integer id);
+
+    List<EnterpriseStudent> getByState(EnterpriseStudent record);
 }
