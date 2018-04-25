@@ -52,6 +52,6 @@ public class ResumeJobServiceImpl implements ResumeJobService {
 
     @Override
     public List getByJobNameAndEnterprise(Param param) {
-        return null;
+        return resumeJobDao.getByJobNameAndEnterprise(param);
     }
 }

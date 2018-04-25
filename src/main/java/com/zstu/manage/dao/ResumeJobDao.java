@@ -1,6 +1,7 @@
 package com.zstu.manage.dao;
 
 import com.zstu.manage.bean.ResumeJob;
+import com.zstu.manage.vo.Param;
 
 import java.util.List;
 
@@ -22,5 +23,7 @@ public interface ResumeJobDao {
     List<ResumeJob> getByStudentId(Integer studentid);
 
     List getByEnterpriseId(Integer enterpriseId);
+
+    List getByJobNameAndEnterprise(Param param);
 
 }

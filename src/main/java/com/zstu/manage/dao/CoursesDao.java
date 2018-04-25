@@ -2,6 +2,8 @@ package com.zstu.manage.dao;
 
 import com.zstu.manage.bean.Courses;
 
+import java.util.List;
+
 public interface CoursesDao {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface CoursesDao {
     int updateByPrimaryKeySelective(Courses record);
 
     int updateByPrimaryKey(Courses record);
+
+    List<Courses> getAll();
 }
