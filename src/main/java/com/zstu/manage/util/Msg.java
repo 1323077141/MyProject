@@ -9,7 +9,7 @@ public class Msg {
 	
 	private int code;
 	private String msg;
-	private List<Map<String, Object>> extend = new ArrayList<>();
+	private Map<String, Object> extend = new HashMap<>();
 	
 	public static Msg success(){
 		Msg result = new Msg();
@@ -26,9 +26,7 @@ public class Msg {
 	}
 	
 	public Msg add(String key, Object value){
-		Map<String,Object> map = new HashMap<>();
-		map.put(key,value);
-		this.getExtend().add(map);
+		this.extend.put(key,value);
 		return this;
 	}
 	
@@ -44,10 +42,10 @@ public class Msg {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
-	public List<Map<String, Object>> getExtend() {
+	public Map<String, Object> getExtend() {
 		return extend;
 	}
-	public void setExtend(List<Map<String, Object>> extend) {
+	public void setExtend(Map<String, Object> extend) {
 		this.extend = extend;
 	}
 	

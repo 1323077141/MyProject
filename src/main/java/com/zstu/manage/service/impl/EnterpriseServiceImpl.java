@@ -26,8 +26,8 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 
     public Boolean register(Enterprise record){
         record.setEnterprisenumber("qy" + UUID.randomUUID().toString().split("-")[0]);
-        int n = enterpriseDao.insertSelective(record);
-        if(n > 0){
+        enterpriseDao.insertSelective(record);
+        if(enterpriseDao.selectByEnterpriseNumber(record) != null){
             return true;
         }else{
             return false;
@@ -35,12 +35,8 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     }
 
     public Boolean update(Enterprise record){
-        int n = enterpriseDao.updateByPrimaryKeySelective(record);
-        if(n > 0){
-            return true;
-        }else{
-            return false;
-        }
+        enterpriseDao.updateByPrimaryKeySelective(record);
+        return true;
     }
 
     public List<Enterprise> getAll(){
@@ -48,8 +44,8 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     }
 
     public Boolean delete(Integer id){
-        int n = enterpriseDao.deleteByPrimaryKey(id);
-        if(n > 0){
+        enterpriseDao.deleteByPrimaryKey(id);
+        if(enterpriseDao.selectByPrimaryKey(id) == null){
             return true;
         }else{
             return false;

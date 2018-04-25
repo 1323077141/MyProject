@@ -20,4 +20,6 @@ public interface EnterpriseStudentDao {
     List<EnterpriseStudent> getAll();
 
     List<EnterpriseStudent> getByStudentId(Integer studentid);
+
+    List<EnterpriseStudent> getByState(EnterpriseStudent record);
 }

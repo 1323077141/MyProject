@@ -51,6 +51,22 @@ public class EnterpriseController {
         }
     }
 
+    /**
+     * 通过企业名获取信息
+     * @param record
+     * @return
+     */
+    @RequestMapping(value = "/getEnterByName",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg getByName(Enterprise record){
+        return Msg.success().add("enterprise",enterpriseService.getByName(record));
+    }
+
+    /**
+     * 更新信息
+     * @param record
+     * @return
+     */
     @RequestMapping(value = "/updateEnter", method = RequestMethod.POST)
     @ResponseBody
     public Msg CheckOut(Enterprise record){
@@ -64,6 +80,10 @@ public class EnterpriseController {
         }
     }
 
+    /**
+     * 获取所有企业信息
+     * @return
+     */
     @RequestMapping("/getAllEnter")
     @ResponseBody
     public Msg getAll(){
@@ -71,6 +91,11 @@ public class EnterpriseController {
         return Msg.success().add("list",list);
     }
 
+    /**
+     * 删除企业
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/deleteEnter",method = RequestMethod.POST)
     @ResponseBody
     public Msg Delete(Integer id){

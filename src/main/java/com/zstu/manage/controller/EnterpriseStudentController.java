@@ -21,22 +21,48 @@ public class EnterpriseStudentController {
     @Resource
     private EnterpriseStudentService enterpriseStudentService;
 
+    /**
+     * 审核状态
+     * @param record
+     * @return
+     */
     @RequestMapping(value = "/updateEnterStu",method = RequestMethod.POST)
     @ResponseBody
     public Msg update(EnterpriseStudent record){
         if(enterpriseStudentService.update(record)){
-            return Msg.success();
+            return Msg.success().add("record",record);
         }else{
             return Msg.fail();
         }
     }
 
+    /**
+     * 学生增加签约方
+     * @param record
+     * @return
+     */
+    @RequestMapping(value = "/addEnterStu",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg add(EnterpriseStudent record){
+        if(enterpriseStudentService.insert(record)){
+            return Msg.success().add("record",record);
+        }else{
+            return Msg.fail();
+        }
+    }
+
+    /**
+     * 获取所有待签约列表
+     * @return
+     */
     @RequestMapping("/getAllEnterStu")
     @ResponseBody
     public Msg getAll(){
         List<EnterpriseStudent> list = enterpriseStudentService.getAll();
         return Msg.success().add("list",list);
     }
+
+
 
     @RequestMapping("/getEnterStuByStudentId")
     @ResponseBody

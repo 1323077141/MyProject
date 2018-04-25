@@ -16,6 +16,11 @@
     select *
     from enterprisestudent
   </select>
+  <select id="getByState" parameterType="com.zstu.manage.bean.EnterpriseStudent" resultMap="BaseResultMap">
+    select *
+    from enterprisestudent
+    where state = #{state}
+  </select>
   <select id="getByStudentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select *
     from studentcourses

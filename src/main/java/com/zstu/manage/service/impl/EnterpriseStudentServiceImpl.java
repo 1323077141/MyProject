@@ -26,30 +26,22 @@ public class EnterpriseStudentServiceImpl implements EnterpriseStudentService{
     }
 
     public Boolean update(EnterpriseStudent record){
-        int n = enterpriseStudentDao.updateByPrimaryKeySelective(record);
-        if(n > 0){
-            return true;
-        }else{
-            return false;
-        }
+        enterpriseStudentDao.updateByPrimaryKeySelective(record);
+        return true;
     }
 
     public Boolean insert(EnterpriseStudent record){
-        int n = enterpriseStudentDao.insertSelective(record);
-        if(n > 0){
-            return true;
-        }else{
-            return false;
-        }
+        enterpriseStudentDao.insertSelective(record);
+        return true;
     }
 
     public Boolean delete(Integer id){
-        int n = enterpriseStudentDao.deleteByPrimaryKey(id);
-        if(n > 0){
-            return true;
-        }else{
-            return false;
-        }
+       enterpriseStudentDao.deleteByPrimaryKey(id);
+       return true;
+    }
+
+    public List<EnterpriseStudent> getByState(EnterpriseStudent record){
+        return enterpriseStudentDao.getByState(record);
     }
 
 }
