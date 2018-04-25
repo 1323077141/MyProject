@@ -23,6 +23,19 @@
     <include refid="Base_Column_List"/>
     from resumejob
   </select>
+  <select id="getByStudentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
+    from resumejob
+    where studentid = #{studentid}
+  </select>
+  <select id="getByEnterpriseId" parameterType="java.lang.Integer" resultType="java.util.Map">
+    select *
+    from resumejob t1
+    left join
+    job t2
+    on t1.jobid = t2.id
+    where t2.enterpriseid = #{enterpriseId}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

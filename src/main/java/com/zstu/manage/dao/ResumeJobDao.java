@@ -19,4 +19,8 @@ public interface ResumeJobDao {
 
     List<ResumeJob> getAll();
 
+    List<ResumeJob> getByStudentId(Integer studentid);
+
+    List getByEnterpriseId(Integer enterpriseId);
+
 }

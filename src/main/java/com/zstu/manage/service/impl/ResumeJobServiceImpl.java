@@ -3,6 +3,7 @@ package com.zstu.manage.service.impl;
 import com.zstu.manage.bean.ResumeJob;
 import com.zstu.manage.dao.ResumeJobDao;
 import com.zstu.manage.service.ResumeJobService;
+import com.zstu.manage.vo.Param;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,42 +19,30 @@ public class ResumeJobServiceImpl implements ResumeJobService {
 
     @Override
     public Boolean add(ResumeJob record) {
-        int n = resumeJobDao.insertSelective(record);
-        if(n > 0){
-            return true;
-        }else{
-            return false;
-        }
+       resumeJobDao.insertSelective(record);
+       return true;
     }
 
     @Override
     public Boolean update(ResumeJob record) {
-        int n = resumeJobDao.updateByPrimaryKeySelective(record);
-        if(n > 0){
-            return true;
-        }else{
-            return false;
-        }
+       resumeJobDao.updateByPrimaryKeySelective(record);
+       return true;
     }
 
     @Override
     public Boolean delete(Integer id) {
-        int n = resumeJobDao.deleteByPrimaryKey(id);
-        if(n > 0){
-            return true;
-        }else{
-            return false;
-        }
+        resumeJobDao.deleteByPrimaryKey(id);
+        return true;
     }
 
     @Override
     public List<ResumeJob> getByStudentId(Integer studentId) {
-        return null;
+        return resumeJobDao.getByStudentId(studentId);
     }
 
     @Override
-    public List<ResumeJob> getByEnterpriseId(Integer EnterpriseId) {
-        return null;
+    public List getByEnterpriseId(Integer EnterpriseId) {
+        return resumeJobDao.getByEnterpriseId(EnterpriseId);
     }
 
     @Override
@@ -62,7 +51,7 @@ public class ResumeJobServiceImpl implements ResumeJobService {
     }
 
     @Override
-    public List<ResumeJob> getByJobNameAndEnterprise(ResumeJob record) {
+    public List getByJobNameAndEnterprise(Param param) {
         return null;
     }
 }

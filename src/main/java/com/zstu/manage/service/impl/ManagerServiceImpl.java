@@ -18,11 +18,7 @@ public class ManagerServiceImpl implements ManagerService{
     }
 
     public Boolean update(Manager record){
-        int n = 0;
-        n = managerDao.updateByPrimaryKeySelective(record);
-        if(n > 0){
-            return true;
-        }
-        return false;
+       managerDao.updateByPrimaryKeySelective(record);
+       return true;
     }
 }

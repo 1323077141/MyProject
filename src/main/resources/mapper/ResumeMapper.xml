@@ -18,8 +18,8 @@
     <result column="resumename" jdbcType="VARCHAR" property="resumename" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, sex, telephone, email, jobname, school, professional, experience, internship, 
-    describe, studentid, studentnumber, resumename
+    id, `name`, sex, telephone, email, jobname, school, professional, experience, internship,
+    `describe`, studentid, studentnumber, resumename
   </sql>
   <select id="getByStudentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select *
@@ -37,10 +37,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zstu.manage.bean.Resume">
-    insert into resume (id, name, sex, 
+    insert into resume (id, `name`, sex,
       telephone, email, jobname, 
       school, professional, experience, 
-      internship, describe, studentid, 
+      internship, `describe`, studentid,
       studentnumber, resumename)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
       #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{jobname,jdbcType=VARCHAR}, 
@@ -55,7 +55,7 @@
         id,
       </if>
       <if test="name != null">
-        name,
+        `name`,
       </if>
       <if test="sex != null">
         sex,
@@ -82,7 +82,7 @@
         internship,
       </if>
       <if test="describe != null">
-        describe,
+        `describe`,
       </if>
       <if test="studentid != null">
         studentid,
@@ -143,7 +143,7 @@
     update resume
     <set>
       <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+        `name` = #{name,jdbcType=VARCHAR},
       </if>
       <if test="sex != null">
         sex = #{sex,jdbcType=VARCHAR},
@@ -170,7 +170,7 @@
         internship = #{internship,jdbcType=VARCHAR},
       </if>
       <if test="describe != null">
-        describe = #{describe,jdbcType=VARCHAR},
+        `describe` = #{describe,jdbcType=VARCHAR},
       </if>
       <if test="studentid != null">
         studentid = #{studentid,jdbcType=INTEGER},
@@ -186,7 +186,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zstu.manage.bean.Resume">
     update resume
-    set name = #{name,jdbcType=VARCHAR},
+    set `name` = #{name,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
       telephone = #{telephone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
@@ -195,7 +195,7 @@
       professional = #{professional,jdbcType=VARCHAR},
       experience = #{experience,jdbcType=VARCHAR},
       internship = #{internship,jdbcType=VARCHAR},
-      describe = #{describe,jdbcType=VARCHAR},
+      `describe` = #{describe,jdbcType=VARCHAR},
       studentid = #{studentid,jdbcType=INTEGER},
       studentnumber = #{studentnumber,jdbcType=VARCHAR},
       resumename = #{resumename,jdbcType=VARCHAR}

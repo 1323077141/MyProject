@@ -85,4 +85,8 @@ public class Job {
         this.enterpriseid = enterpriseId;
     }
 
+    public Job(){
+
+    }
+
 }

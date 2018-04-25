@@ -19,6 +19,12 @@ public class ManagerController {
     @Resource
     private ManagerService managerService;
 
+    /**
+     * 登录
+     * @param record
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "/loginMan",method = RequestMethod.POST)
     @ResponseBody
     public Msg login(Manager record,HttpSession session){
@@ -33,6 +39,11 @@ public class ManagerController {
         return Msg.fail();
     }
 
+    /**
+     * 修改密码
+     * @param manager
+     * @return
+     */
     @RequestMapping(value = "/updateMan",method = RequestMethod.POST)
     @ResponseBody
     public Msg update(Manager manager){

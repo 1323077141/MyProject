@@ -29,6 +29,11 @@ public class ResumeController {
         return Msg.success().add("list",list);
     }
 
+    /**
+     * 根据ID获取简历信息
+     * @param id
+     * @return
+     */
     @RequestMapping("/getResumeById")
     @ResponseBody
     public Msg getById(Integer id){
@@ -39,16 +44,26 @@ public class ResumeController {
         return Msg.fail();
     }
 
+    /**
+     * 增加简历信息
+     * @param resume
+     * @return
+     */
     @RequestMapping(value = "/addResume",method = RequestMethod.POST)
     @ResponseBody
     public Msg add(Resume resume){
         if(resumeService.add(resume)){
-            return Msg.success();
+            return Msg.success().add("record",resume);
         }else{
             return Msg.fail();
         }
     }
 
+    /**
+     * 删除简历信息
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/deleteResume")
     @ResponseBody
     public Msg delete(Integer id){
@@ -59,11 +74,16 @@ public class ResumeController {
         }
     }
 
+    /**
+     * 更新简历
+     * @param resume
+     * @return
+     */
     @RequestMapping(value = "/updateResume",method = RequestMethod.POST)
     @ResponseBody
     public Msg update(Resume resume){
         if(resumeService.update(resume)){
-            return Msg.success();
+            return Msg.success().add("resume",resumeService.getByResumeId(resume.getId()));
         }else{
             return Msg.fail();
         }

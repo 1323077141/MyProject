@@ -27,30 +27,18 @@ public class JobServiceImpl implements JobService {
     }
 
     public Boolean update(Job job){
-        int n = jobDao.updateByPrimaryKeySelective(job);
-        if(n > 0){
-            return true;
-        }else{
-            return false;
-        }
+        jobDao.updateByPrimaryKeySelective(job);
+        return true;
     }
 
     public Boolean insert(Job job){
-        int n = jobDao.insertSelective(job);
-        if(n > 0){
-            return true;
-        }else{
-            return false;
-        }
+        jobDao.insertSelective(job);
+        return true;
     }
 
     public Boolean delete(Integer id){
-        int n = jobDao.deleteByPrimaryKey(id);
-        if(n > 0){
-            return true;
-        }else{
-            return false;
-        }
+        jobDao.deleteByPrimaryKey(id);
+        return true;
     }
 
 }

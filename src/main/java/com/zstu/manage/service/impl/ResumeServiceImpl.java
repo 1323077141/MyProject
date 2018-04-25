@@ -21,30 +21,18 @@ public class ResumeServiceImpl implements ResumeService{
     }
 
     public Boolean add(Resume resume){
-        int n = resumeDao.insertSelective(resume);
-        if(n > 0){
-            return true;
-        }else{
-            return false;
-        }
+       resumeDao.insertSelective(resume);
+       return true;
     }
 
     public Boolean delete(Integer id){
-        int n = resumeDao.deleteByPrimaryKey(id);
-        if(n > 0){
-            return true;
-        }else{
-            return false;
-        }
+        resumeDao.deleteByPrimaryKey(id);
+        return true;
     }
 
     public Boolean update(Resume resume){
-        int n = resumeDao.updateByPrimaryKeySelective(resume);
-        if(n > 0){
-            return true;
-        }else{
-            return false;
-        }
+        resumeDao.updateByPrimaryKeySelective(resume);
+        return true;
     }
 
     public Resume getByResumeId(Integer id){

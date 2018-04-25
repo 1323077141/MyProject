@@ -1,6 +1,7 @@
 package com.zstu.manage.service;
 
 import com.zstu.manage.bean.ResumeJob;
+import com.zstu.manage.vo.Param;
 
 import java.util.List;
 
@@ -17,10 +18,10 @@ public interface ResumeJobService {
 
     List<ResumeJob> getByStudentId(Integer studentId);
 
-    List<ResumeJob> getByEnterpriseId(Integer EnterpriseId);
+    List getByEnterpriseId(Integer EnterpriseId);
 
     List<ResumeJob> getAll();
 
-    List<ResumeJob> getByJobNameAndEnterprise(ResumeJob record);
+    List getByJobNameAndEnterprise(Param param);
 
 }
