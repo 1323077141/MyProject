@@ -17,6 +17,10 @@
     id, studentname, studentnumber, telephone, address, acdemy, classname, password, 
     email, sex
   </sql>
+  <select id="getByStuNum" parameterType="com.zstu.manage.bean.Student" resultMap="BaseResultMap">
+    select * from student
+    where studentnumber = #{studentnumber}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

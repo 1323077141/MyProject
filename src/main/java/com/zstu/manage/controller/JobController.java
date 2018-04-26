@@ -41,15 +41,15 @@ public class JobController {
     }
 
     /**
-     *
-     * @param session
+     * 获取该企业的招聘岗位
+     * @param enterpriseid
      * @return
      */
     @RequestMapping(value = "/getJobByEnterprise")
     @ResponseBody
-    public Msg getByEnterprise(HttpSession session){
-        Integer enterpriseId = (Integer) session.getAttribute("enterpriseId");
-        Job job = new Job(enterpriseId);
+    public Msg getByEnterprise(Integer enterpriseid){
+//        Integer enterpriseId = (Integer) session.getAttribute("enterpriseId");
+        Job job = new Job(enterpriseid);
         List<Job> list = jobService.getByEnterprise(job);
         return Msg.success().add("list",list);
     }

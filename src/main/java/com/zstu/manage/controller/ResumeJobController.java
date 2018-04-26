@@ -21,16 +21,15 @@ public class ResumeJobController {
     ResumeJobService resumeJobService;
 
     /**
-     *
+     * 学生投递简历
      * @param record
-     * @param session
      * @return
      */
     @RequestMapping(value = "/addResumeJob",method = RequestMethod.POST)
     @ResponseBody
-    public Msg addByStudent(ResumeJob record,HttpSession session){
-        record.setStudentid((Integer) session.getAttribute("studentId"));
-        record.setStudentnumber((String) session.getAttribute("studentNumber"));
+    public Msg addByStudent(ResumeJob record){
+//        record.setStudentid((Integer) session.getAttribute("studentId"));
+//        record.setStudentnumber((String) session.getAttribute("studentNumber"));
         if(resumeJobService.add(record)){
             return Msg.success().add("record",record);
         }else{
@@ -38,6 +37,11 @@ public class ResumeJobController {
         }
     }
 
+    /**
+     * 更新简历信息(浏览状态，初试筛选，面试邀约，面试状态，接收工作与否)
+     * @param record
+     * @return
+     */
     @RequestMapping(value = "/updateResumeJob",method = RequestMethod.POST)
     @ResponseBody
     public Msg updateById(ResumeJob record){
@@ -48,29 +52,48 @@ public class ResumeJobController {
         }
     }
 
+    /**
+     * 学生查看找寻工作状态
+     * @param studentid
+     * @return
+     */
     @RequestMapping(value = "/getByStudentId",method = RequestMethod.POST)
     @ResponseBody
-    public Msg getByStudentId(HttpSession session){
-        return Msg.success().add("list",resumeJobService.getByStudentId((Integer) session.getAttribute("studentId")));
+    public Msg getByStudentId(Integer studentid){
+        return Msg.success().add("list",resumeJobService.getByStudentId(studentid));
     }
 
-
+    /**
+     * 企业查看投递的简历信息
+     * @param enterpriseid
+     * @return
+     */
     @RequestMapping(value = "/getByEnterpriseId",method = RequestMethod.POST)
     @ResponseBody
-    public Msg getByEnterpriseId(HttpSession session){
-        return Msg.success().add("list",resumeJobService.getByEnterpriseId((Integer) session.getAttribute("enterpriseId")));
+    public Msg getByEnterpriseId(Integer enterpriseid){
+        return Msg.success().add("list",resumeJobService.getByEnterpriseId(enterpriseid));
     }
 
+    /**
+     * 获取所有投递的简历信息
+     * @return
+     */
     @RequestMapping(value = "/getAllResumeJob")
     @ResponseBody
     public Msg getAll(){
         return Msg.success().add("list",resumeJobService.getAll());
     }
 
+    /**
+     * 企业查询特定职位所投递的简历
+     * @param jobname
+     * @param enterpriseid
+     * @return
+     */
     @RequestMapping(value = "/getByNameAndEnterprise",method = RequestMethod.POST)
     @ResponseBody
-    public Msg getByNmaeAndEnterprise(String jobname,HttpSession session){
-        Param param = new Param((Integer)session.getAttribute("enterpriseId"),jobname);
+    public Msg getByNmaeAndEnterprise(String jobname,Integer enterpriseid){
+        Param param = new Param(enterpriseid,jobname);
         return Msg.success().add("list",resumeJobService.getByJobNameAndEnterprise(param));
     }
 

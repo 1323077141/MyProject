@@ -31,8 +31,8 @@ public class ManagerController {
         Manager manager = managerService.selectByName(record);
         if(manager != null){
             if(manager.getPassword().equals(record.getPassword())){
-                session.setAttribute("managerName",manager.getManagername());
-                session.setAttribute("managerId",manager.getId());
+                session.setAttribute("managername",manager.getManagername());
+                session.setAttribute("managerid",manager.getId());
                 return Msg.success().add("manager",manager);
             }
         }

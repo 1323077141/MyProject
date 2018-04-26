@@ -43,7 +43,9 @@
     job t2
     on t1.jobid = t2.id
     where t2.enterpriseid = #{enterpriseId}
-    and t2.jobname like concat('%',#{jobname},'%')
+    <if test="jobname != null and jobname != ''">
+      and t2.jobname like concat('%',#{jobname},'%')
+    </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 

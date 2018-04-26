@@ -28,8 +28,8 @@ public class EnterpriseController {
         Enterprise enterprise = enterpriseService.login(record);
         if(enterprise != null){
             if(enterprise.getPassword().equals(record.getPassword()) &&enterprise.getState() == 1){
-                session.setAttribute("enterpriseNumber",enterprise.getEnterprisenumber());
-                session.setAttribute("enterpriseId",enterprise.getId());
+                session.setAttribute("enterprisenumber",enterprise.getEnterprisenumber());
+                session.setAttribute("enterpriseid",enterprise.getId());
                 return Msg.success().add("enterprise",enterprise);
             }
         }

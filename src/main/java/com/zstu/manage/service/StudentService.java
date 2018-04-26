@@ -6,5 +6,7 @@ public interface StudentService {
 
     Boolean add(Student student);
     Boolean update(Student student);
+    Student getByStudentNumber(Student student);
+    Student getById(Integer id);
 
 }
