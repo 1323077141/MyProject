@@ -74,11 +74,17 @@ public class EnterpriseStudentController {
         return Msg.success().add("list",list);
     }
 
+
+    /**
+     * 学生查看签约信息
+     * @param studentid
+     * @return
+     */
     @RequestMapping("/getEnterStuByStudentId")
     @ResponseBody
-    public Msg getByStudentId(HttpSession session){
-        Integer studentId = (Integer) session.getAttribute("studentId");
-        List<EnterpriseStudent> list = enterpriseStudentService.getByStudentId(studentId);
+    public Msg getByStudentId(Integer studentid){
+//        Integer studentId = (Integer) session.getAttribute("studentId");
+        List<EnterpriseStudent> list = enterpriseStudentService.getByStudentId(studentid);
         return Msg.success().add("list",list);
     }
 

@@ -21,11 +21,16 @@ public class ResumeController {
     @Resource
     private ResumeService resumeService;
 
+    /**
+     * 学生查询自己的简历信息
+     * @param studentid
+     * @return
+     */
     @RequestMapping("/getResumeByStudentId")
     @ResponseBody
-    public Msg getByStudentId(HttpSession session){
-        Integer StudentId = (Integer) session.getAttribute("studentId");
-        List<Resume> list = resumeService.getByStudentId(StudentId);
+    public Msg getByStudentId(Integer studentid){
+//        Integer StudentId = (Integer) session.getAttribute("studentId");
+        List<Resume> list = resumeService.getByStudentId(studentid);
         return Msg.success().add("list",list);
     }
 
