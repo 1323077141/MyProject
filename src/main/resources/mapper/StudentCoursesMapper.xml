@@ -12,7 +12,7 @@
   <sql id="Base_Column_List">
     id, courseid, coursename, studentid, studentnumber, score
   </sql>
-  <select id="getByStudentId" parameterType="java.lang.Integer" resultMap="java.util.Map">
+  <select id="getByStudentId" parameterType="java.lang.Integer" resultType="java.util.Map">
     select * from
     studentcourses t1 left JOIN
     courses t2

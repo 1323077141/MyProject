@@ -16,6 +16,10 @@ public class StudentCoursesController {
     @Resource
     private StudentCourseService studentCourseService;
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/addStuCour",method = RequestMethod.POST)
     @ResponseBody
     public Msg addStuCour(){
@@ -23,6 +27,11 @@ public class StudentCoursesController {
         return null;
     }
 
+    /**
+     * 查看学生的课程成绩
+     * @param studentid
+     * @return
+     */
     @RequestMapping(value = "/getByStuId",method = RequestMethod.POST)
     @ResponseBody
     public Msg getByStuId(Integer studentid){
