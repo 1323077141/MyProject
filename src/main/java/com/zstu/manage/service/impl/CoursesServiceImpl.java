@@ -14,6 +14,11 @@ public class CoursesServiceImpl implements CoursesService {
     private CoursesDao coursesDao;
 
     @Override
+    public Courses getByName(Courses record) {
+        return coursesDao.getByName(record);
+    }
+
+    @Override
     public Boolean insert(Courses record){
         coursesDao.insertSelective(record);
         return true;

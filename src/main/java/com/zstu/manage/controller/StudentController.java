@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.io.InputStream;
 
 @Controller
 public class StudentController {
@@ -55,13 +56,15 @@ public class StudentController {
     }
 
     /**
-     *
+     * 导入学生信息
      * @return
      */
     @RequestMapping(value = "/addStu",method = RequestMethod.POST)
     @ResponseBody
-    public Msg addStu(@RequestParam(value="upfile",required=false)MultipartFile file){
-//        InputStream in =
-        return null;
+    public Msg addStu(@RequestParam(value="upfile",required=false)MultipartFile file) throws Exception{
+        InputStream in = file.getInputStream();
+        studentService.importStudent(in,file);
+        in.close();
+        return Msg.success();
     }
 }

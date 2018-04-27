@@ -18,4 +18,6 @@ public interface CoursesDao {
     int updateByPrimaryKey(Courses record);
 
     List<Courses> getAll();
+
+    Courses getByName(Courses record);
 }

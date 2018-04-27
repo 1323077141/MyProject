@@ -19,6 +19,9 @@
     on t1.courseid = t2.id
     where t1.studentid = #{studentid}
   </select>
+  <select id="getAll" resultMap="BaseResultMap">
+    select * from studentcourses
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

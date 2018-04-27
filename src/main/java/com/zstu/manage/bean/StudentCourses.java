@@ -60,4 +60,16 @@ public class StudentCourses {
     public void setScore(Float score) {
         this.score = score;
     }
+
+    @Override
+    public String toString() {
+        return "StudentCourses{" +
+                "id=" + id +
+                ", courseid=" + courseid +
+                ", coursename='" + coursename + '\'' +
+                ", studentid=" + studentid +
+                ", studentnumber='" + studentnumber + '\'' +
+                ", score=" + score +
+                '}';
+    }
 }
