@@ -55,7 +55,7 @@ public class EnterpriseStudentController {
      * 获取所有待签约列表
      * @return
      */
-    @RequestMapping("/getAllEnterStu")
+    @RequestMapping(value = "/getAllEnterStu",method = RequestMethod.POST)
     @ResponseBody
     public Msg getAll(){
         List<EnterpriseStudent> list = enterpriseStudentService.getAll();
@@ -67,7 +67,7 @@ public class EnterpriseStudentController {
      * @param record
      * @return
      */
-    @RequestMapping("/getEnterStuByState")
+    @RequestMapping(value = "/getEnterStuByState",method = RequestMethod.POST)
     @ResponseBody
     public Msg getByState(EnterpriseStudent record){
         List<EnterpriseStudent> list = enterpriseStudentService.getByState(record);
@@ -77,13 +77,13 @@ public class EnterpriseStudentController {
 
     /**
      * 学生查看签约信息
-     * @param studentid
+     * @param session
      * @return
      */
-    @RequestMapping("/getEnterStuByStudentId")
+    @RequestMapping(value = "/getEnterStuByStudentId",method = RequestMethod.POST)
     @ResponseBody
-    public Msg getByStudentId(Integer studentid){
-//        Integer studentId = (Integer) session.getAttribute("studentId");
+    public Msg getByStudentId(HttpSession session){
+        Integer studentid = (Integer) session.getAttribute("studentid");
         List<EnterpriseStudent> list = enterpriseStudentService.getByStudentId(studentid);
         return Msg.success().add("list",list);
     }

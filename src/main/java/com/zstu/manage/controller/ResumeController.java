@@ -23,13 +23,13 @@ public class ResumeController {
 
     /**
      * 学生查询自己的简历信息
-     * @param studentid
+     * @param session
      * @return
      */
-    @RequestMapping("/getResumeByStudentId")
+    @RequestMapping(value = "/getResumeByStudentId",method = RequestMethod.POST)
     @ResponseBody
-    public Msg getByStudentId(Integer studentid){
-//        Integer StudentId = (Integer) session.getAttribute("studentId");
+    public Msg getByStudentId(HttpSession session){
+        Integer studentid = (Integer) session.getAttribute("studentid");
         List<Resume> list = resumeService.getByStudentId(studentid);
         return Msg.success().add("list",list);
     }
@@ -39,7 +39,7 @@ public class ResumeController {
      * @param id
      * @return
      */
-    @RequestMapping("/getResumeById")
+    @RequestMapping(value = "/getResumeById",method = RequestMethod.POST)
     @ResponseBody
     public Msg getById(Integer id){
         Resume resume = resumeService.getByResumeId(id);
@@ -69,7 +69,7 @@ public class ResumeController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/deleteResume")
+    @RequestMapping(value = "/deleteResume",method = RequestMethod.POST)
     @ResponseBody
     public Msg delete(Integer id){
         if(resumeService.delete(id)){

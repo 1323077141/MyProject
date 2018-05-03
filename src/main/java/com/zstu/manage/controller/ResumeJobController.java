@@ -54,23 +54,25 @@ public class ResumeJobController {
 
     /**
      * 学生查看找寻工作状态
-     * @param studentid
+     * @param session
      * @return
      */
     @RequestMapping(value = "/getByStudentId",method = RequestMethod.POST)
     @ResponseBody
-    public Msg getByStudentId(Integer studentid){
+    public Msg getByStudentId(HttpSession session){
+            Integer studentid = (Integer)session.getAttribute("studentid");
         return Msg.success().add("list",resumeJobService.getByStudentId(studentid));
     }
 
     /**
      * 企业查看投递的简历信息
-     * @param enterpriseid
+     * @param session
      * @return
      */
     @RequestMapping(value = "/getByEnterpriseId",method = RequestMethod.POST)
     @ResponseBody
-    public Msg getByEnterpriseId(Integer enterpriseid){
+    public Msg getByEnterpriseId(HttpSession session){
+        Integer enterpriseid = (Integer) session.getAttribute("enterpriseid");
         return Msg.success().add("list",resumeJobService.getByEnterpriseId(enterpriseid));
     }
 
@@ -78,7 +80,7 @@ public class ResumeJobController {
      * 获取所有投递的简历信息
      * @return
      */
-    @RequestMapping(value = "/getAllResumeJob")
+    @RequestMapping(value = "/getAllResumeJob",method = RequestMethod.POST)
     @ResponseBody
     public Msg getAll(){
         return Msg.success().add("list",resumeJobService.getAll());
@@ -87,12 +89,13 @@ public class ResumeJobController {
     /**
      * 企业查询特定职位所投递的简历
      * @param jobname
-     * @param enterpriseid
+     * @param session
      * @return
      */
     @RequestMapping(value = "/getByNameAndEnterprise",method = RequestMethod.POST)
     @ResponseBody
-    public Msg getByNmaeAndEnterprise(String jobname,Integer enterpriseid){
+    public Msg getByNmaeAndEnterprise(String jobname,HttpSession session){
+        Integer enterpriseid = (Integer) session.getAttribute("enterpriseid");
         Param param = new Param(enterpriseid,jobname);
         return Msg.success().add("list",resumeJobService.getByJobNameAndEnterprise(param));
     }

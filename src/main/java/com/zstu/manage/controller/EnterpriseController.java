@@ -84,7 +84,7 @@ public class EnterpriseController {
      * 获取所有企业信息
      * @return
      */
-    @RequestMapping("/getAllEnter")
+    @RequestMapping(value = "/getAllEnter",method = RequestMethod.POST)
     @ResponseBody
     public Msg getAll(){
         List<Enterprise> list = enterpriseService.getAll();

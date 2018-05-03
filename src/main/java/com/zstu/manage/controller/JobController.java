@@ -21,7 +21,7 @@ public class JobController {
      * 获取所有职位
      * @return
      */
-    @RequestMapping(value = "/getAllJob")
+    @RequestMapping(value = "/getAllJob",method = RequestMethod.POST)
     @ResponseBody
     public Msg getAll(){
         List<Job> list = jobService.getAll();
@@ -42,13 +42,13 @@ public class JobController {
 
     /**
      * 获取该企业的招聘岗位
-     * @param enterpriseid
+     * @param session
      * @return
      */
-    @RequestMapping(value = "/getJobByEnterprise")
+    @RequestMapping(value = "/getJobByEnterprise",method = RequestMethod.POST)
     @ResponseBody
-    public Msg getByEnterprise(Integer enterpriseid){
-//        Integer enterpriseId = (Integer) session.getAttribute("enterpriseId");
+    public Msg getByEnterprise(HttpSession session){
+        Integer enterpriseid = (Integer) session.getAttribute("enterpriseid");
         Job job = new Job(enterpriseid);
         List<Job> list = jobService.getByEnterprise(job);
         return Msg.success().add("list",list);
